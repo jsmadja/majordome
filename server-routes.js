@@ -9,7 +9,7 @@ function puts(error, stdout, stderr) {
 }
 
 exports.youtube = function (req, res) {
-    var command = "./from-youtube-to-popcorn.sh https://www.youtube.com/" + req.params;
+    var command = "scripts/from-youtube-to-popcorn.sh https://www.youtube.com/" + req.params;
     console.log(command);
     exec(command, function (error, stdout, stderr) {
         res.send({out: stdout, err: stderr, error: error});
