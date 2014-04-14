@@ -15,3 +15,12 @@ exports.youtube = function (req, res) {
         res.send({out: stdout, err: stderr, error: error});
     });
 };
+
+exports.video = function (req, res) {
+    var dir = "web_store/" + new Date().getTime();
+    var message = req.originalUrl.replace('/video/', '');
+    exec("wget " + message + " --directory-prefix=" + dir, function (error, stdout, stderr) {
+        res.send({out: stdout, err: stderr, error: error});
+    });
+    console.log(message);
+};
